@@ -4,9 +4,9 @@ typedef long long      LL;
 typedef vector<int>    VI;
 typedef pair<int,int>  PII;
  
-const int MX = 1000005;
+const int MX = 1005;
 bool stat[MX];
-bool nod_OK[250] ;		// maximum number of node is 240 (calculated using another program :P )
+bool nod_OK[250] ;		// maximum NOD for all N is 240 (calculated using another program :P )
 vector<int> primes{2};
  
 void sieve(){
