@@ -25,7 +25,6 @@ void clear(int n)
     }
 }
 
-// to find bridges
 int dfs(int par, int u)
 {
     d[u] = low[u] = ++id ;
@@ -36,15 +35,11 @@ int dfs(int par, int u)
             continue ;
         if(d[v] == 0)
         {
-            low[v] = min(low[v], dfs(u, v)) ;
+            low[v] = dfs(u, v) ;
             if(d[u] < low[v])
                 bridges.push_back(make_pair(min(u, v), max(u, v))) ;
-            low[u] = min(low[u], low[v]) ;
         }
-        else 
-        {
-            low[u] = min(low[u], d[v]) ;
-        }
+        low[u] = min(low[u], low[v]) ;
     }
     return low[u] ;
 }
@@ -54,7 +49,6 @@ inline bool is_bridge(int u, int v)
     return binary_search(bridges.begin(), bridges.end(), make_pair(min(u, v), max(u, v))) ;
 }
 
-// to find leaf nodes in compressed graph
 int dfs2(int u)
 {
     flag[u] = 1 ;
@@ -78,7 +72,6 @@ int dfs2(int u)
         }
     }
 
-    // speacial case for root node (0)
     if(u == 0 and b == 1)
         ret++ ;
 
